@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  gin-project-template:
+    build:
+      context: ../ #指定工作目录
+      dockerfile: ./build/docker/Dockerfile #指定Dockerfile文件
+    command: --default-authentication-plugin=mysql_native_password #解决外部无法访问
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./logs:/go/src/gin-project-template/logs

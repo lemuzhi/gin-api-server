@@ -15,9 +15,10 @@
   - routers 路由相关逻辑
   - service 项目核心业务逻辑
   - pkg 内部贡献包存放目录
-    - code 项目业务 Code 码
+    - errcode 公共错误码
     - validation 内部通用的验证函数
     - middleware 内部HTTP处理链
+    - 
 - pkg 外部应用可使用的代码，即其他应用可以通过import导入目录下面的代码
 - scripts 用于存放各类构建、安装、分析等操作的脚本文件
   - lib 存放 shell 脚本
