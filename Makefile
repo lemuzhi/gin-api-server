@@ -22,5 +22,4 @@ docker:
 
 .PHONY: run
 run:
-	@cd deploy
-	@docker-compose up -d --build
+	@cd deploy && docker-compose up -d --build

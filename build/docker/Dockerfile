@@ -4,7 +4,7 @@ MAINTAINER "lemuzhi"
 
 WORKDIR /go/src/gin-project-template
 
-COPY ../../ /go/src/gin-project-template
+COPY . /go/src/gin-project-template
 
 RUN go env -w GO111MODULE=on \
     && go env -w GOPROXY=https://goproxy.cn,direct \

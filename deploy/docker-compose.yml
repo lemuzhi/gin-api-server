@@ -1,7 +1,8 @@
 version: '3'
 
 services:
-  gin-project-template:
+  api-server:
+    container_name: gin-project-template
     build:
       context: ../ #指定工作目录
       dockerfile: ./build/docker/Dockerfile #指定Dockerfile文件
