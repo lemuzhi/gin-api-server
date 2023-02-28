@@ -1,7 +1,6 @@
 package errcode
 
 import (
-	"douyin/internal/model/response"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"

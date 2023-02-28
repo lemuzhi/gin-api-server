@@ -2,9 +2,9 @@ package initialize
 
 import (
 	"context"
+	"gin-project-template/conf"
 	"gin-project-template/global"
 	"github.com/go-redis/redis/v8"
-	"github.com/spf13/viper"
 	"log"
 )
 
@@ -20,10 +20,9 @@ func InitRedis() {
 	//}
 	//rdb := redis.NewClient(opt)
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     viper.GetString("redis.addr"),
-		Username: viper.GetString("redis.username"),
-		Password: viper.GetString("redis.password"),
-		DB:       viper.GetInt("redis.db"),
+		Addr:     conf.Redis.Host,
+		Password: conf.Redis.Password,
+		DB:       conf.Redis.DB,
 	})
 	_, err := rdb.Ping(ctx).Result()
 	if err != nil {

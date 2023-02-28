@@ -3,6 +3,7 @@ package initialize
 import (
 	"database/sql"
 	"fmt"
+	"gin-project-template/conf"
 	mysql2 "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
@@ -26,17 +27,17 @@ func migrate(db *gorm.DB) error {
 // InitMysql 初始化连接mysql
 func InitMysql() {
 	//dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?%s",
-		viper.GetString("mysql.username"),
-		viper.GetString("mysql.password"),
-		viper.GetString("mysql.addr"),
-		viper.GetString("mysql.port"),
-		viper.GetString("mysql.db"),
-		viper.GetString("mysql.config"),
-	)
+	//dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?%s",
+	//	viper.GetString("mysql.username"),
+	//	viper.GetString("mysql.password"),
+	//	viper.GetString("mysql.host"),
+	//	viper.GetString("mysql.port"),
+	//	viper.GetString("mysql.db"),
+	//	viper.GetString("mysql.conf"),
+	//)
 	var err error
 Label:
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+	db, err := gorm.Open(mysql.Open(conf.Mysql.Dsn), &gorm.Config{
 		NamingStrategy: &schema.NamingStrategy{
 			SingularTable: true,
 		},
@@ -49,8 +50,8 @@ Label:
 			panic(err)
 		}
 
-		if mysqlErr.Message == fmt.Sprintf("Unknown database '%s'", viper.GetString("mysql.db")) {
-			db1, errs := sql.Open("mysql", strings.SplitAfter(dsn, "/")[0])
+		if mysqlErr.Message == fmt.Sprintf("Unknown database '%s'", conf.Mysql.Db) {
+			db1, errs := sql.Open("mysql", strings.SplitAfter(conf.Mysql.Dsn, "/")[0])
 			if errs != nil {
 				log.Println("db Open error: ", errs)
 			}

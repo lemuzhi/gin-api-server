@@ -8,10 +8,12 @@ require (
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/google/uuid v1.1.2
+	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/rs/xid v1.4.0
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/viper v1.14.0
+	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.4.0
 	gorm.io/driver/mysql v1.4.5
 	gorm.io/gorm v1.24.3
@@ -45,6 +47,8 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/ugorji/go/codec v1.2.8 // indirect
+	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect
 	golang.org/x/text v0.5.0 // indirect

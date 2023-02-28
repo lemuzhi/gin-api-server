@@ -1,9 +1,9 @@
 package router
 
 import (
-	"gin-project-template/global"
+	"gin-project-template/conf"
+	"gin-project-template/initialize"
 	"gin-project-template/internal/apiserver/api"
-	"gin-project-template/internal/pkg/middleware"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"io"
@@ -30,11 +30,13 @@ func InitRouter() *gin.Engine {
 	// 如果需要同时将日志写入文件和控制台，请使用以下代码。
 	//gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 	//var r *gin.Engine
-	if global.Config.GetString("gin.mode") == "debug" {
+	if conf.Server.Mode == "debug" {
 		gin.DefaultWriter = io.MultiWriter(os.Stdout)
 	}
 	r := gin.Default()
-	r.Use(middleware.AccessLogger())
+
+	r.Use(initialize.GinLogger())
+	r.Use(initialize.GinRecovery(true))
 
 	r.SetHTMLTemplate(html)
 

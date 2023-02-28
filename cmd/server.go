@@ -3,12 +3,12 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"gin-project-template/global"
+	"gin-project-template/conf"
 	"gin-project-template/initialize"
 	"gin-project-template/internal/router"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
+	"go.uber.org/zap"
 	"log"
 	"net/http"
 	"time"
@@ -28,17 +28,18 @@ func NewServerStartCmd(ctx context.Context, version string) *cobra.Command {
 			return RunServerStart(ctx, opts, version)
 		},
 	}
-	cmd.PersistentFlags().StringVarP(&opts.config, "config", "c", "./conf/config.toml", "Config file")
+	cmd.PersistentFlags().StringVarP(&opts.config, "conf", "c", "./conf/conf.toml", "Config file")
 	return cmd
 }
 
 func RunServerStart(ctx context.Context, opts *ServerStartOptions, version string) error {
 	//初始化配置
-	initialize.InitConfig("./config/config.toml")
-
+	initialize.InitConfig("./conf/config.toml")
 	//初始化日志
 	initialize.InitLogger()
-
+	zap.L().Info("heello")
+	zap.L().Debug("heello")
+	zap.L().Warn("heello")
 	//初始化mysql
 	initialize.InitMysql()
 
@@ -49,14 +50,14 @@ func RunServerStart(ctx context.Context, opts *ServerStartOptions, version strin
 	initialize.InitCron()
 
 	//设置gin的启动模式
-	gin.SetMode(viper.GetString("gin.mode"))
+	gin.SetMode(conf.Server.Mode)
 
 	//初始化路由
 	handler := router.InitRouter()
 
 	//自定义HTTP配置
 	server := &http.Server{
-		Addr:           global.Config.GetString("gin.addr"),
+		Addr:           conf.Server.Addr,
 		Handler:        handler,
 		ReadTimeout:    20 * time.Second,
 		WriteTimeout:   20 * time.Second,
@@ -72,7 +73,7 @@ func RunServerStart(ctx context.Context, opts *ServerStartOptions, version strin
 		联系方式:微信号：le_muzhi QQ：1163648924
 		官网:https://www.yizhengtong.net
 		本地接口地址:%v
-	`+"\n", version, global.Config.GetString("gin.addr"))
+	`+"\n", version, conf.Server.Addr)
 	if err := server.ListenAndServe(); err != nil {
 		log.Println(err)
 	}
