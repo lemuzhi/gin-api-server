@@ -3,9 +3,9 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"gin-project-template/conf"
-	"gin-project-template/initialize"
-	"gin-project-template/internal/router"
+	"gin-api-server/conf"
+	"gin-api-server/initialize"
+	"gin-api-server/internal/router"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"

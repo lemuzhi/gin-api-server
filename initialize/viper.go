@@ -2,7 +2,7 @@ package initialize
 
 import (
 	"fmt"
-	"gin-project-template/conf"
+	"gin-api-server/conf"
 	"github.com/spf13/viper"
 	"log"
 )

@@ -2,7 +2,7 @@ package tools
 
 import (
 	"fmt"
-	"gin-project-template/conf"
+	"gin-api-server/conf"
 	"github.com/jordan-wright/email"
 	"log"
 	"net/smtp"

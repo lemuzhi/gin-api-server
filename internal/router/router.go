@@ -1,9 +1,9 @@
 package router
 
 import (
-	"gin-project-template/conf"
-	"gin-project-template/initialize"
-	"gin-project-template/internal/apiserver/api"
+	"gin-api-server/conf"
+	"gin-api-server/initialize"
+	"gin-api-server/internal/apiserver/api"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"io"

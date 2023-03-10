@@ -6,7 +6,12 @@ import (
 	"net/http"
 )
 
-func NewResponse(code ResponseCode, err ...interface{}) response.Response {
+type Response struct {
+	StatusCode uint32
+	StatusMsg  string
+}
+
+func NewResponse(code ResponseCode, err ...interface{}) *Response {
 	msg := code.Msg
 	for _, arg := range err {
 		fmt.Println(arg)
@@ -18,7 +23,7 @@ func NewResponse(code ResponseCode, err ...interface{}) response.Response {
 		}
 	}
 
-	return response.Response{
+	return &Response{
 		StatusCode: code.Code,
 		StatusMsg:  msg,
 	}
@@ -33,7 +38,7 @@ func New(c *gin.Context) *Resp {
 }
 
 func (r *Resp) RespOK() {
-	r.ctx.JSON(http.StatusOK, response.Response{
+	r.ctx.JSON(http.StatusOK, Response{
 		StatusCode: OK.Code,
 		StatusMsg:  OK.Msg,
 	})
@@ -43,7 +48,7 @@ func (r *Resp) RespFail(code ResponseCode) {
 	if code == (ResponseCode{}) {
 		code = Fail
 	}
-	r.ctx.JSON(http.StatusOK, response.Response{
+	r.ctx.JSON(http.StatusOK, Response{
 		StatusCode: code.Code,
 		StatusMsg:  code.Msg,
 	})
@@ -61,7 +66,7 @@ func (r *Resp) RespFailDetail(code ResponseCode, err ...interface{}) {
 		}
 	}
 
-	r.ctx.JSON(http.StatusOK, response.Response{
+	r.ctx.JSON(http.StatusOK, Response{
 		StatusCode: code.Code,
 		StatusMsg:  msg,
 	})

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api-server:
-    container_name: gin-project-template
+    container_name: gin-api-server
     build:
       context: ../ #指定工作目录
       dockerfile: ./build/docker/Dockerfile #指定Dockerfile文件
@@ -10,4 +10,4 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./logs:/go/src/gin-project-template/logs
+      - ./logs:/go/src/gin-api-server/logs

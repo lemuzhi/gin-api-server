@@ -2,8 +2,8 @@ package initialize
 
 import (
 	"context"
-	"gin-project-template/conf"
-	"gin-project-template/global"
+	"gin-api-server/conf"
+	"gin-api-server/global"
 	"github.com/go-redis/redis/v8"
 	"log"
 )

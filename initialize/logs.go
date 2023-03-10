@@ -2,8 +2,8 @@ package initialize
 
 import (
 	"fmt"
-	"gin-project-template/conf"
-	"gin-project-template/tools"
+	"gin-api-server/conf"
+	"gin-api-server/tools"
 	"github.com/gin-gonic/gin"
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"

@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"flag"
-	"gin-project-template/cmd"
+	"gin-api-server/cmd"
 	"github.com/spf13/cobra"
 	"log"
 )

@@ -3,7 +3,7 @@ package errcode
 //type code [2]interface{}
 
 type ResponseCode struct {
-	Code int32
+	Code uint32
 	Msg  string
 }
 

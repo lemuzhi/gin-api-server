@@ -3,7 +3,7 @@ package initialize
 import (
 	"database/sql"
 	"fmt"
-	"gin-project-template/conf"
+	"gin-api-server/conf"
 	mysql2 "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"

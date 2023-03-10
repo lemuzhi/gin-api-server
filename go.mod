@@ -1,4 +1,4 @@
-module gin-project-template
+module gin-api-server
 
 go 1.18
 

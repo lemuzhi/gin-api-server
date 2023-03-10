@@ -1,12 +1,12 @@
 [server]
-serverName="gin-project-template"
+serverName="gin-api-server"
 mode="debug"
 addr=":8888"
 
 [zap]
-DebugFileName="./logs/debug/project-debug.log"
-InfoFileName="./logs/info/project-info.log"
-WarnFileName="./logs/error/project-error.log"
+DebugFileName="./logs/debug/debug.log"
+InfoFileName="./logs/info/info.log"
+WarnFileName="./logs/error/error.log"
 MaxSize=500
 MaxAge=28
 MaxBackups=3
