@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"gin-api-server/conf"
 	"gin-api-server/initialize"
-	"gin-api-server/internal/router"
+	"gin-api-server/internal"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
@@ -53,7 +53,7 @@ func RunServerStart(ctx context.Context, opts *ServerStartOptions, version strin
 	gin.SetMode(conf.Server.Mode)
 
 	//初始化路由
-	handler := router.InitRouter()
+	handler := internal.InitRouter()
 
 	//自定义HTTP配置
 	server := &http.Server{
